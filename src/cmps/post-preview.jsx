@@ -1,3 +1,4 @@
+import { LongTxt } from "./long-txt.jsx";
 
 export function PostPreview({ post, onSelectPost, postToShow }) {
 
@@ -17,7 +18,7 @@ export function PostPreview({ post, onSelectPost, postToShow }) {
             {postToShow && <button>Edit</button>}
         </section>
         <section className="post-content flex">
-            <p>{post.txt}</p>
+            <p>{<LongTxt txt={post.txt} length={50} />}</p>
             <div className="likes-details">
                 <h5 className="pointer">{post.isLiked ? '❤️' : '🖤'}</h5>
                 <h5>{post.likes}</h5>

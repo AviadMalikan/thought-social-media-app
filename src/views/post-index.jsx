@@ -28,7 +28,7 @@ export function PostIndex() {
         }
         {
             postToShow && <PostDetails post={postToShow}
-                onSelectPost={onSelectPost} 
+                onSelectPost={onSelectPost}
                 postToShow={postToShow}
                 onGoBack={() => setPostToShow(null)} />
         }
