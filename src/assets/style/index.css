@@ -18,6 +18,9 @@ body {
 @import 'base/helpers.css';
 @import 'base/layout.css';
 
-/* Component */
+/* views */
+@import 'views/app-header.css';
 
-@import 'views/app-header.css'
+/* Component */
+@import 'cmps/post-list.css';
+@import 'cmps/post-preview.css';

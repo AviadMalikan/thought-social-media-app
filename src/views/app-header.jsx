@@ -2,8 +2,7 @@
 
 export function AppHeader({ setPage }) {
     return <header className="app-header full flex main-layout">
-
-            <h1>Hello Header</h1>
+            <h1>InstaPOST</h1>
 
             <nav className="app-nav">
                 <a href="#" onClick={() => { setPage('login') }}>Login</a>

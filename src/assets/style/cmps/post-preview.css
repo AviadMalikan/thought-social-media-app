@@ -1,0 +1,23 @@
+.post-preview {
+    width: 100%;
+    text-align: start;
+    margin-bottom: 40px;
+}
+
+.post-content {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-details {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.post-details img {
+    max-height: 40px;
+    border-radius: 50%;
+    outline: 2px solid var(--clr1);
+    margin-inline-end: 10px;
+}

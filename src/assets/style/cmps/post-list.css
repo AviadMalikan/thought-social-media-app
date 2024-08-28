@@ -1,0 +1,14 @@
+.post-list {
+    padding-top: 15px;
+    list-style: none;
+    /* display: grid; */
+    /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+}
+
+.post-list li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--clrbg);
+}
