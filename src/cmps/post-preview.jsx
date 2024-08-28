@@ -1,8 +1,6 @@
 import { LongTxt } from "./long-txt.jsx";
 
-export function PostPreview({ post, onSelectPost, postToShow }) {
-
-    console.log(postToShow);
+export function PostPreview({ post, onSelectPost, onRemovePost, postToShow }) {
 
     return <article className="post-preview">
         <section className="post-header flex">
@@ -14,7 +12,7 @@ export function PostPreview({ post, onSelectPost, postToShow }) {
                         className="pointer">{post.date}</h6>
                 </div>
             </div>
-            {!postToShow && <button>x</button>}
+            {!postToShow && <button onClick={() => onRemovePost(post.id)}>x</button>}
             {postToShow && <button>Edit</button>}
         </section>
         <section className="post-content flex">

@@ -10,17 +10,23 @@ import Swal from 'sweetalert2';
 function App() {
   const [page, setPage] = useState('post')
 
-  function showMsg(isSuccess, msg) {
-    Swal.fire({
-      title: msg,
-      icon: isSuccess ? 'success' : 'error',
-      text: isSuccess ? '' : 'try again later',
+  function showMsg(msg, isSuccess, text) {
+    const Toast = Swal.mixin({
+      toast: true,
+      background: "rgba(247, 238, 211)",
+      position: "bottom-end",
       showConfirmButton: false,
-      timer: 1200,
-      width: '250px',
-      position: 'bottom-end',
-      backdrop: 'rgba(0,0,123,0.0)',
-    })
+      timer: 2500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: isSuccess ? 'success' : 'error',
+      text: isSuccess ? text : 'try again later',
+    });
   }
 
   return (
@@ -28,9 +34,9 @@ function App() {
       <AppHeader setPage={setPage} />
 
       <main>
-        {page === 'login' && <Login />}
+        {page === 'login' && <Login showMsg={showMsg} />}
         {page === 'about' && <About />}
-        {page === 'post' && <PostIndex />}
+        {page === 'post' && <PostIndex showMsg={showMsg} />}
       </main>
 
     </section>
