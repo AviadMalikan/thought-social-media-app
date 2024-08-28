@@ -46,10 +46,10 @@ function save(post) {
     }
 }
 
-function getEmptyPost(title = '', likes = '', byUser = '') {
+function getEmptyPost(txt = '', likes = '', byUser = '') {
     return {
         id: '',
-        title,
+        txt,
         description: '',
         byUser: 'Admin',
         likes,
@@ -78,8 +78,8 @@ function _createPosts() {
     }
 }
 
-function _createPost(title, like = 10) {
-    const post = getEmptyPost(title, like)
+function _createPost(txt, like = 10) {
+    const post = getEmptyPost(txt, like)
     post.id = utilService.makeId()
     return post
 }

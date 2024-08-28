@@ -1,6 +1,7 @@
 .post-list {
     padding-top: 15px;
     list-style: none;
+    padding: 5px;
     /* display: grid; */
     /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
 }
