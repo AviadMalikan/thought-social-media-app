@@ -1,11 +1,16 @@
-import './assets/App.css';
+import { useState } from 'react';
+
+import { AppHeader } from './views/app-header.jsx'
+import { Login } from './views/login-index.jsx'
+import { About } from './views/about.jsx'
+import { PostIndex } from './views/post-index.jsx'
+
 import Swal from 'sweetalert2';
-// import "sweetalert2/src/sweetalert2.scss"
 
 function App() {
+  const [page, setPage] = useState('post')
 
   function showMsg(isSuccess, msg) {
-
     Swal.fire({
       title: msg,
       icon: isSuccess ? 'success' : 'error',
@@ -19,12 +24,16 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hello react</h1>
-        <button onClick={() => showMsg(true, 'Remove successfully')}> OK</button>
-      </header>
-    </div>
+    <section className='main-layout app'>
+      <AppHeader setPage={setPage} />
+
+      <main>
+        {page === 'login' && <Login />}
+        {page === 'about' && <About />}
+        {page === 'post' && <PostIndex />}
+      </main>
+
+    </section>
   );
 }
 
