@@ -6,7 +6,7 @@ export function PostIndex() {
 
     const [posts, setPost] = useState([])
 
-    useEffect(() => { loadPosts }, [])
+    useEffect(() => { loadPosts() }, [])
 
     function loadPosts() {
 
