@@ -1,11 +1,11 @@
 .post-details{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
+}
+
+.post-details>* {
+    margin-inline-end: 6px;
 }
 
 
-.post-details button{
+.post-details button {
     margin-bottom: 20px;
 }
