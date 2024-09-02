@@ -1,6 +1,7 @@
 .main-layout {
     display: grid;
     grid-template-columns: 15rem 1fr 15rem;
+    grid-template-columns: 1fr 620px 1fr;
 }
 
 .main-layout>* {
@@ -20,12 +21,12 @@
 
 @media screen and (max-width: 992px) {
     .main-layout {
-    grid-template-columns: 5rem 1fr 5rem;
+        grid-template-columns: 1fr 620px 1fr;
     }
 }
 
 /* On screens that are 600px or less, set the background color to olive */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 620px) {
     .main-layout {
         grid-template-columns: 1.6rem 1fr 1.6rem;
     }
