@@ -1,13 +1,13 @@
 
 
 export function AppHeader({ setPage }) {
-    return <header className="app-header full flex main-layout">
-            <h1>InstaPOST</h1>
+    return <header className="app-header full ">
+        <span className="logo">@thought</span>
 
-            <nav className="app-nav">
-                <a href="#" onClick={() => { setPage('login') }}>Login</a>
-                <a href="#" onClick={() => { setPage('about') }}>About</a>
-                <a href="#" onClick={() => { setPage('post') }}>Posts</a>
-            </nav>
+        <nav className="app-nav">
+            <a href="#" onClick={() => { setPage('about') }}>About</a>
+            <a href="#" onClick={() => { setPage('post') }}>Posts</a>
+        </nav>
+        <a className="login-btn" href="#" onClick={() => { setPage('login') }}>Login</a>
     </header>
 }

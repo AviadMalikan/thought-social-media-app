@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { AppHeader } from './views/app-header.jsx'
-import { Login } from './views/login-index.jsx'
+import { Home } from './views/home.jsx'
 import { About } from './views/about.jsx'
 import { PostIndex } from './views/post-index.jsx'
 
@@ -34,7 +34,7 @@ function App() {
       <AppHeader setPage={setPage} />
 
       <main>
-        {page === 'login' && <Login showMsg={showMsg} />}
+        {page === 'login' && <Home showMsg={showMsg} />}
         {page === 'about' && <About />}
         {page === 'post' && <PostIndex showMsg={showMsg} />}
       </main>

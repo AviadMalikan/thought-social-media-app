@@ -1,4 +1,4 @@
-export function Login() {
+export function Home() {
     return <section className="login">
         <h2>
             Hello To InstPOST!
