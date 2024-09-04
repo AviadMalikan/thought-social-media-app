@@ -14,11 +14,21 @@ export function PostPreview({ post, onSelectPost, onRemovePost, postToShow }) {
                 <span onClick={() => onSelectPost(post.id)}
                     className="post-date pointer">{utilService.showTimeTxt(post.date)}</span>
             </div>
-            <div className="post-utils">•••</div>
+            <div title="remove" className="post-utils pointer">•••</div>
         </section>
         <section className="post-content">
-            <div className="post-txt"></div>
-            <div className="post-likes"></div>
+            <p className="post-text">{<LongTxt txt={post.txt} length={50} />}</p>
+            <div className="post-data">
+                <div className="post-btn">
+                    <span className="like">{post.isLiked ? '♥' : '♡'} {post.likes}</span>
+                </div>
+                <div className="post-btn">
+                    <span className="commend">🗨️</span>
+                </div>
+                <div className="post-btn">
+                    <span className="share">{post.isLiked ? '♥' : '♡'} ↑</span>
+                </div>
+            </div>
         </section>
     </article>
 
@@ -37,10 +47,8 @@ export function PostPreview({ post, onSelectPost, onRemovePost, postToShow }) {
             {postToShow && <button>Edit</button>}
         </section>
         <section className="post-content flex">
-            <p>{<LongTxt txt={post.txt} length={50} />}</p>
             <div className="likes-details">
                 {/* <h5 className="pointer">{post.isLiked ? '❤️' : '🖤'}</h5> */}
-                <h5>{post.likes} Likes</h5>
             </div>
         </section>
     </article>

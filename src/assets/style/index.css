@@ -4,7 +4,9 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     background-color: var(--gray3);
-    text-align: center
+    text-align: center;
+    color: rgb(243 245 247);
+    caret-color: transparent;
 }
 
 /* setup */
