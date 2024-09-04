@@ -3,7 +3,6 @@ import { utilService } from "../services/util.service.js"
 
 export function PostPreview({ post, onSelectPost, onRemovePost, postToShow }) {
 
-
     return <article className="post-preview">
         <div className="userImg">
             <img src={`https://robohash.org/${post.byUser}`} alt={`${post.byUser} img`} />

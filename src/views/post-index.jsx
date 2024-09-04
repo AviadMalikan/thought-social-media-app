@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { postService } from "../services/post.service.js"
 import { PostList } from "../cmps/post-list.jsx"
 import { PostDetails } from "../cmps/post-details.jsx"
+import { PostFilter } from "../cmps/post-filter.jsx"
 
 
 export function PostIndex({ showMsg }) {
@@ -27,6 +28,7 @@ export function PostIndex({ showMsg }) {
         })
     }
 
+    return <PostFilter />
     return <section className="post-index">
         {
             (!postToShow) && <PostList posts={posts}

@@ -64,7 +64,7 @@ function getEmptyPost(txt = '', likes = '', byUser = '') {
 }
 
 function getDefaultFilter() {
-    return { txt: '', like: '', date: '' }
+    return { txt: '', like: '', byUser: '' }
 }
 
 function _createPosts() {
