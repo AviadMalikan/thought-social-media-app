@@ -73,6 +73,7 @@
     align-items: center;
     transition: all 0.2s;
     border-radius: 20px;
+    min-width: 44px;
     background-color: var(--gray3);
 }
 

@@ -2,7 +2,7 @@
 
 export function AppHeader({ setPage }) {
     return <header className="app-header full ">
-        <span className="logo">@thought</span>
+        <span className="logo pointer"  href="#">@thought</span>
 
         <nav className="app-nav">
             <a href="#" onClick={() => { setPage('about') }}>About</a>

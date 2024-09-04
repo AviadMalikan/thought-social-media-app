@@ -26,7 +26,7 @@ export function PostPreview({ post, onSelectPost, onRemovePost, postToShow }) {
                     <span className="commend">🗨️</span>
                 </div>
                 <div className="post-btn">
-                    <span className="share">{post.isLiked ? '♥' : '♡'} ↑</span>
+                    <span className="share"> ↑</span>
                 </div>
             </div>
         </section>
