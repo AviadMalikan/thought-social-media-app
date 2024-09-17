@@ -18,10 +18,14 @@ function query(filterBy = getDefaultFilter()) {
         .then(posts => {
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
-                posts = posts.filter(post => regex.test(post.vendor))
+                posts = posts.filter(post => regex.test(post.txt))
             }
-            if (filterBy.minSpeed) {
-                posts = posts.filter(post => post.maxSpeed >= filterBy.minSpeed)
+            if (filterBy.likes) {
+                posts = posts.filter(post => post.likes >= filterBy.likes)
+            }
+            if (filterBy.byUser) {
+                const regex = new RegExp(filterBy.txt, 'i')
+                posts = posts.filter(post => regex.test(post.byUser))
             }
             return posts
         })
@@ -64,7 +68,14 @@ function getEmptyPost(txt = '', likes = '', byUser = '') {
 }
 
 function getDefaultFilter() {
-    return { txt: '', like: '', byUser: '' }
+    return { txt: '', likes: '', byUser: '' }
+}
+
+
+function _createPost(txt, like = 10) {
+    const post = getEmptyPost(txt, like)
+    post.id = utilService.makeId()
+    return post
 }
 
 function _createPosts() {
@@ -76,10 +87,4 @@ function _createPosts() {
         posts.push(_createPost('welcome to my page', 150, 'aviad'))
         utilService.saveToStorage(POST_KEY, posts)
     }
-}
-
-function _createPost(txt, like = 10) {
-    const post = getEmptyPost(txt, like)
-    post.id = utilService.makeId()
-    return post
 }

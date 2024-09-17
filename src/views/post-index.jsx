@@ -3,16 +3,22 @@ import { postService } from "../services/post.service.js"
 import { PostList } from "../cmps/post-list.jsx"
 import { PostDetails } from "../cmps/post-details.jsx"
 import { PostFilter } from "../cmps/post-filter.jsx"
+import { PostAdd } from "../cmps/post-add.jsx"
 
 
 export function PostIndex({ showMsg }) {
     const [posts, setPost] = useState([])
     const [postToShow, setPostToShow] = useState(null)
+    const [filterBy, setFilterBy] = useState(postService.getDefaultFilter)
 
-    useEffect(() => { loadPosts() }, [])
+    useEffect(() => { loadPosts() }, [filterBy])
 
     function loadPosts() {
-        postService.query().then(setPost)
+        postService.query(filterBy).then(setPost)
+    }
+
+    function onSetFilter(filterBy) {
+        setFilterBy(filterBy)
     }
 
     function onSelectPost(postId) {
@@ -28,8 +34,14 @@ export function PostIndex({ showMsg }) {
         })
     }
 
-    return <PostFilter />
+    function onEditPost() {
+        console.log('Added');
+
+    }
+
     return <section className="post-index">
+        <PostAdd onEditPost={onEditPost} />
+        {/* <PostFilter onSetFilter={onSetFilter} /> */}
         {
             (!postToShow) && <PostList posts={posts}
                 onSelectPost={onSelectPost}

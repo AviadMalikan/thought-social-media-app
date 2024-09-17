@@ -1,0 +1,22 @@
+.post-add {}
+
+.post-add textarea {
+    resize: none;
+    overflow: hidden;
+    padding: 15px;
+    background: var(--gray2);
+    font-family: sans-serif;
+    width: auto;
+    border-radius: 8px;
+    transition: all .5s;
+    transition: width .5s;
+    font-size: 1.1rem;
+}
+
+.post-add textarea:focus {
+    width: 500px;
+    background: var(--gray3);
+    color: var(--gray1);
+    outline: var(--gray2) 1px solid;
+    caret-color: auto
+}

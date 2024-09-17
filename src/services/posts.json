@@ -1,0 +1,58 @@
+{
+    "id": "post12345",
+    "author": {
+        "id": "user001",
+        "name": "John Doe",
+        "profilePic": "https://example.com/profile-pic.jpg"
+    },
+    "content": {
+        "text": "Enjoying a sunny day at the beach!",
+        "media": [
+            {
+                "type": "image",
+                "url": "https://example.com/beach-photo.jpg",
+                "altText": "Beach view"
+            }
+        ]
+    },
+    "metrics": {
+        "likes": [
+            {
+                "userId": "user002",
+                "name": "Jane Smith",
+                "likedAt": "2024-09-08T10:30:00Z"
+            },
+            {
+                "userId": "user003",
+                "name": "Alice Johnson",
+                "likedAt": "2024-09-08T11:15:00Z"
+            }
+        ],
+        "totalLikes": 2,
+        "shares": 1,
+        "comments": [
+            {
+                "id": "comment001",
+                "userId": "user004",
+                "name": "Mark Davis",
+                "text": "Looks amazing!",
+                "commentedAt": "2024-09-08T12:45:00Z"
+            },
+            {
+                "id": "comment002",
+                "userId": "user005",
+                "name": "Sara Lee",
+                "text": "Wish I was there!",
+                "commentedAt": "2024-09-08T13:05:00Z"
+            }
+        ],
+        "totalComments": 2
+    },
+    "postDate": "2024-09-08T09:00:00Z",
+    "visibility": "public",
+    "location": {
+        "lat": 34.0522,
+        "lng": -118.2437,
+        "name": "Santa Monica Beach"
+    }
+}
