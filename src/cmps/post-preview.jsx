@@ -1,12 +1,20 @@
 import { LongTxt } from "./long-txt.jsx";
 import { utilService } from "../services/util.service.js"
+import { useNavigate } from "react-router-dom";
 
-export function PostPreview({ post, onSelectPost, onRemovePost, postToShow }) {
+
+export function PostPreview({ post, onRemovePost, postToShow }) {
+    const navigate = useNavigate()
+
+    function onSelectPost(postId) {
+        navigate(`/posts/${postId}`)
+    }
 
     return <article className="post-preview">
         <div className="userImg">
             <img src={`https://robohash.org/${post.byUser}`} alt={`${post.byUser} img`} />
         </div>
+
         <section className="post-header">
             <div className="post-details">
                 <span className="by-user">{post.byUser}</span>
@@ -15,8 +23,9 @@ export function PostPreview({ post, onSelectPost, onRemovePost, postToShow }) {
             </div>
             <div title="remove" className="post-utils pointer">•••</div>
         </section>
+
         <section className="post-content">
-            <p className="post-text">{<LongTxt txt={post.txt} length={50} />}</p>
+            <p className="post-text" onClick={() => onSelectPost(post.id)}>{<LongTxt txt={post.txt} length={50} />}</p>
             <div className="post-data">
                 <div className="post-btn">
                     <span className="like">{post.isLiked ? '♥' : '♡'} {post.likes}</span>
@@ -42,8 +51,6 @@ export function PostPreview({ post, onSelectPost, onRemovePost, postToShow }) {
                         className="pointer">{utilService.showTimeTxt(post.date)}</h6>
                 </div>
             </div>
-            {!postToShow && <button onClick={() => onRemovePost(post.id)}>x</button>}
-            {postToShow && <button>Edit</button>}
         </section>
         <section className="post-content flex">
             <div className="likes-details">

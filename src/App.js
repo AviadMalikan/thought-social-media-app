@@ -5,10 +5,12 @@ import { Home } from './views/home.jsx'
 import { About } from './views/about.jsx'
 import { PostIndex } from './views/post-index.jsx'
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { PostDetails } from './cmps/post-details.jsx';
 
 function App() {
-  const [page, setPage] = useState('post')
+  // const [page, setPage] = useState('post')
 
   function showMsg(msg, isSuccess, text) {
     const Toast = Swal.mixin({
@@ -29,18 +31,24 @@ function App() {
     });
   }
 
-  return (
+  return <Router>
     <section className='main-layout app'>
-      <AppHeader setPage={setPage} />
+      <AppHeader />
 
       <main>
-        {page === 'login' && <Home showMsg={showMsg} />}
-        {page === 'about' && <About />}
-        {page === 'post' && <PostIndex showMsg={showMsg} />}
+        <Routes>
+          <Route path='/about' element={<About />} />
+          <Route path='/' element={<Home />} />
+        
+          <Route path='/posts' element={<PostIndex />} />
+          <Route path='/posts/:postId' element={<PostDetails />} />
+        
+          <Route path='*' element={<h2>PAGE NOT FOUND</h2>} />
+        </Routes>
       </main>
 
     </section>
-  );
+  </Router>;
 }
 
 export default App;

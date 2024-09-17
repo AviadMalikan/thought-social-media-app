@@ -22,12 +22,10 @@ export function PostAdd({ onEditPost }) {
     }
 
     const adjustHeight = () => {
-        const textarea = textareaRef.current;
-        if (textarea) {
-            textarea.style.height = 'auto'; // Reset the height to auto to calculate the correct scroll height
-            textarea.style.height = textarea.scrollHeight + 'px'; // Set the height to match the scroll height
-            console.log('adjustHeight');
-
+        const elTextarea = textareaRef.current;
+        if (elTextarea) {
+            elTextarea.style.height = 'auto'; // Reset the height to auto to calculate the correct scroll height
+            elTextarea.style.height = elTextarea.scrollHeight + 'px'; // Set the height to match the scroll height
         }
     }
 

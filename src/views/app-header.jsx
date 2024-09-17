@@ -1,13 +1,13 @@
+import { NavLink } from "react-router-dom"
 
-
-export function AppHeader({ setPage }) {
+export function AppHeader() {
     return <header className="app-header full ">
-        <span className="logo pointer"  href="#">@thought</span>
+        <span className="logo pointer" href="#">@thought</span>
 
         <nav className="app-nav">
-            <a href="#" onClick={() => { setPage('about') }}>About</a>
-            <a href="#" onClick={() => { setPage('post') }}>Posts</a>
+            <NavLink to='/about'>About</NavLink>
+            <NavLink to='/posts'>Posts</NavLink>
         </nav>
-        <a className="login-btn" href="#" onClick={() => { setPage('login') }}>Login</a>
+        <a className="login-btn" href="/#" >Login</a>
     </header>
 }

@@ -8,9 +8,10 @@
     font-family: sans-serif;
     width: auto;
     border-radius: 8px;
-    transition: all .5s;
-    transition: width .5s;
+    transition: width .5s ease-in-out;
     font-size: 1.1rem;
+    line-height:35px;
+    min-height: 70px;
 }
 
 .post-add textarea:focus {
@@ -18,5 +19,13 @@
     background: var(--gray3);
     color: var(--gray1);
     outline: var(--gray2) 1px solid;
-    caret-color: auto
+    caret-color: auto;
+    line-height:normal;
+}
+
+@media screen and (max-width: 620px) {
+    .post-add textarea:focus  {
+        width: 100%;
+        grid-template-columns: 1.6rem 1fr 1.6rem;
+    }
 }
