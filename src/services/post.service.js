@@ -50,20 +50,24 @@ function save(post) {
     }
 }
 
-function getEmptyPost(txt = '', likes = '', byUser = '') {
+function getEmptyPost(txt = '', likes = 0, byUser = '') {
     return {
         id: '',
-        txt,
-        description: '',
-        byUser: 'Admin',
-        likes,
-        date: new Date(),
+        author: {
+            userName: byUser,
+            profilePic: ''
+        },
+        content: {
+            text: txt,
+            media: []
+        },
+        metics: {
+            likes: likes,
+            share: 0,
+            comments: 0,
+        },
         isLiked: false,
-        // thumbnail: '',
-        // emoji: {
-        //     like: 10,
-        //     unlike: 0,
-        // },
+        date: new Date()
     }
 }
 
@@ -72,8 +76,8 @@ function getDefaultFilter() {
 }
 
 
-function _createPost(txt, like = 10) {
-    const post = getEmptyPost(txt, like)
+function _createPost(txt, like = 10, byUser) {
+    const post = getEmptyPost(txt, like, byUser)
     post.id = utilService.makeId()
     return post
 }

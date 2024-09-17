@@ -12,12 +12,14 @@ export function PostPreview({ post, onRemovePost, postToShow }) {
 
     return <article className="post-preview">
         <div className="userImg">
-            <img src={`https://robohash.org/${post.byUser}`} alt={`${post.byUser} img`} />
+            <img
+                src={`https://robohash.org/${post.author.userName}`}
+                alt={`${post.author.userName} img`} />
         </div>
 
         <section className="post-header">
             <div className="post-details">
-                <span className="by-user">{post.byUser}</span>
+                <span className="by-user">{post.author.userName}</span>
                 <span onClick={() => onSelectPost(post.id)}
                     className="post-date pointer">{utilService.showTimeTxt(post.date)}</span>
             </div>
@@ -25,16 +27,16 @@ export function PostPreview({ post, onRemovePost, postToShow }) {
         </section>
 
         <section className="post-content">
-            <p className="post-text" onClick={() => onSelectPost(post.id)}>{<LongTxt txt={post.txt} length={50} />}</p>
+            <p className="post-text" onClick={() => onSelectPost(post.id)}>{<LongTxt txt={post.content.text} length={50} />}</p>
             <div className="post-data">
                 <div className="post-btn">
-                    <span className="like">{post.isLiked ? '♥' : '♡'} {post.likes}</span>
+                    <span className="like">{post.isLiked ? '♥' : '♡'} {post.metics.likes}</span>
                 </div>
                 <div className="post-btn">
-                    <span className="commend">🗨️</span>
+                    <span className="commend">🗨️ {post.metics.comments}</span>
                 </div>
                 <div className="post-btn">
-                    <span className="share"> ↑</span>
+                    <span className="share">↑ {post.metics.share}</span>
                 </div>
             </div>
         </section>

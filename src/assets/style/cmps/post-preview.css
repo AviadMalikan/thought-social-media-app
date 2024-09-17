@@ -71,6 +71,7 @@
     height: 36px;
     display: flex;
     align-items: center;
+    justify-content: center;
     transition: all 0.2s;
     border-radius: 20px;
     min-width: 44px;
