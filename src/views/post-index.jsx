@@ -5,17 +5,25 @@ import { PostDetails } from "../cmps/post-details.jsx"
 import { PostFilter } from "../cmps/post-filter.jsx"
 import { PostEdit } from "../cmps/post-edit.jsx"
 import { Link } from "react-router-dom"
+import { eventBusService, showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
 
 export function PostIndex({ showMsg }) {
     const [posts, setPost] = useState([])
     const [postToShow, setPostToShow] = useState(null)
     const [filterBy, setFilterBy] = useState(postService.getDefaultFilter)
+    const [isLoading, setIsLoading] = useState(false)
 
-    useEffect(() => { loadPosts() }, [filterBy])
+    useEffect(() => {
+        loadPosts()
+        setIsLoading(true)
+    }, [filterBy])
 
     function loadPosts() {
-        postService.query(filterBy).then(setPost)
+        postService.query(filterBy).then((posts) => {
+            setPost(posts)
+            setIsLoading(false)
+        })
     }
 
     function onSetFilter(filterBy) {
@@ -28,11 +36,15 @@ export function PostIndex({ showMsg }) {
     }
 
     function onRemovePost(postId) {
-        postService.remove(postId).then(() => {
-            const updatedPost = posts.filter(p => p.id !== postId)
-            setPost(updatedPost)
-            // showMsg('', true, `Post ${postId} has been removed`)
-        })
+        postService.remove(postId)
+            .then(() => {
+                const updatedPost = posts.filter(p => p.id !== postId)
+                setPost(updatedPost)
+                showSuccessMsg('Post Remove Successfully')
+            })
+            .catch(() => {
+                showErrorMsg()
+            })
     }
 
 
@@ -43,16 +55,12 @@ export function PostIndex({ showMsg }) {
         {/* <PostEdit onEditPost={onEditPost} /> */}
         {/* <PostFilter onSetFilter={onSetFilter} /> */}
         {
-            (!postToShow) && <PostList posts={posts}
+            (!isLoading) && <PostList posts={posts}
                 onSelectPost={onSelectPost}
                 onRemovePost={onRemovePost} />
         }
-        {
-            postToShow && <PostDetails post={postToShow}
-                onSelectPost={onSelectPost}
-                postToShow={postToShow}
-                onGoBack={() => setPostToShow(null)} />
-        }
+        {isLoading && <h3>LOADING...</h3>}
+        {(!posts.length && !isLoading) && <h3>No thought yes, share yours.</h3>}
     </section >
 
 }

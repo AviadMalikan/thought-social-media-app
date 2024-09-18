@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import { postService } from "../services/post.service";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 
 export function PostEdit() {
     const [postToEdit, setPostToEdit] = useState(postService.getEmptyPost())
     const navigate = useNavigate()
     const { postId } = useParams()
-    console.log('the date is', new Date());
 
     useEffect(() => {
         if (!postId) return
@@ -17,7 +17,7 @@ export function PostEdit() {
         postService.get(postId)
             .then(setPostToEdit)
             .catch(err => {
-                console.log('Hadd Issue with:', err);
+                console.log('Had Issue with:', err);
                 navigate('/posts')
             })
     }
@@ -35,12 +35,14 @@ export function PostEdit() {
     }
 
     function onSavePost(ev) {
+        const msg = postToEdit.id ? ' Saved' : 'Uploaded'
         ev.preventDefault()
         postService.save(postToEdit)
             .then(post => {
-                console.log("post is:", post);
                 navigate("/posts")
+                showSuccessMsg(`Your post has been ${msg}`)
             })
+            .catch(showErrorMsg)
     }
 
     return <section className="car-edit">
