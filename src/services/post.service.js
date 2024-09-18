@@ -89,6 +89,7 @@ function _createPosts() {
         posts.push(_createPost('hey guys', 50, 'shlomi'))
         posts.push(_createPost('My tutorial', 7, 'shani'))
         posts.push(_createPost('welcome to my page', 150, 'aviad'))
+        posts.push(_createPost('lorem lipstum of the number six because i think that all i need is live and love but no i dont think so because tha book its pretty but not enough so finally i think yes', 150, 'aviad'))
         utilService.saveToStorage(POST_KEY, posts)
     }
 }

@@ -6,7 +6,8 @@ export function PostEdit() {
     const [postToEdit, setPostToEdit] = useState(postService.getEmptyPost())
     const navigate = useNavigate()
     const { postId } = useParams()
-    console.log(postToEdit);
+    console.log('the date is', new Date());
+
     useEffect(() => {
         if (!postId) return
         loadPost()

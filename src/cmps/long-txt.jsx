@@ -7,12 +7,15 @@ export function LongTxt({ txt, length }) {
         return (txt.length < length || isLongTxtShown) ? txt : txt.substring(0, length + 1) + '...'
     }
 
-    function onToggleLongTxt() {
+    function onToggleLongTxt(ev) {
+        console.log(ev);
+        
+        ev.stopPropagation()
         setLongTxtShown((prevLongTxtShown) => !prevLongTxtShown)
     }
 
     return <span>
         <span>{getTxtToShow(isLongTxtShown, txt, length)}</span>
-        {txt.length > length && <a className="pointer" onClick={onToggleLongTxt}>{isLongTxtShown ? '   .Read Less' : 'Read More'}</a>}
+        {txt.length > length && <a className="pointer" onClick={onToggleLongTxt}>{isLongTxtShown ? '  READ LESS' : 'READ MORE'}</a>}
     </span>
 }
