@@ -3,7 +3,8 @@ import { postService } from "../services/post.service.js"
 import { PostList } from "../cmps/post-list.jsx"
 import { PostDetails } from "../cmps/post-details.jsx"
 import { PostFilter } from "../cmps/post-filter.jsx"
-import { PostAdd } from "../cmps/post-add.jsx"
+import { PostEdit } from "../cmps/post-edit.jsx"
+import { Link } from "react-router-dom"
 
 
 export function PostIndex({ showMsg }) {
@@ -30,17 +31,16 @@ export function PostIndex({ showMsg }) {
         postService.remove(postId).then(() => {
             const updatedPost = posts.filter(p => p.id !== postId)
             setPost(updatedPost)
-            showMsg('', true, `Post ${postId} has been removed`)
+            // showMsg('', true, `Post ${postId} has been removed`)
         })
     }
 
-    function onEditPost() {
-        console.log('Added');
-
-    }
 
     return <section className="post-index">
-        <PostAdd onEditPost={onEditPost} />
+        <Link to="/posts/edit">
+            <button>Add Post</button>
+        </Link>
+        {/* <PostEdit onEditPost={onEditPost} /> */}
         {/* <PostFilter onSetFilter={onSetFilter} /> */}
         {
             (!postToShow) && <PostList posts={posts}

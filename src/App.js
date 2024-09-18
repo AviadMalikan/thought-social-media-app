@@ -8,6 +8,7 @@ import { PostIndex } from './views/post-index.jsx'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { PostDetails } from './cmps/post-details.jsx';
+import { PostEdit } from './cmps/post-edit.jsx';
 
 function App() {
   // const [page, setPage] = useState('post')
@@ -39,10 +40,12 @@ function App() {
         <Routes>
           <Route path='/about' element={<About />} />
           <Route path='/' element={<Home />} />
-        
+
           <Route path='/posts' element={<PostIndex />} />
+          <Route path='/posts/edit' element={<PostEdit />} />
+          <Route path='/posts/edit/:postId' element={<PostEdit />} />
           <Route path='/posts/:postId' element={<PostDetails />} />
-        
+
           <Route path='*' element={<h2>PAGE NOT FOUND</h2>} />
         </Routes>
       </main>

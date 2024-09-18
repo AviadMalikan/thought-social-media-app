@@ -50,7 +50,7 @@ function save(post) {
     }
 }
 
-function getEmptyPost(txt = '', likes = 0, byUser = '') {
+function getEmptyPost(txt = '', likes = 0, byUser = 'guest') {
     return {
         id: '',
         author: {
@@ -67,7 +67,7 @@ function getEmptyPost(txt = '', likes = 0, byUser = '') {
             comments: 0,
         },
         isLiked: false,
-        date: new Date()
+        date: new Date(),
     }
 }
 
@@ -87,7 +87,7 @@ function _createPosts() {
     if (!posts || !posts.length) {
         posts = []
         posts.push(_createPost('hey guys', 50, 'shlomi'))
-        posts.push(_createPost('My tutorial', 50, 'shani'))
+        posts.push(_createPost('My tutorial', 7, 'shani'))
         posts.push(_createPost('welcome to my page', 150, 'aviad'))
         utilService.saveToStorage(POST_KEY, posts)
     }
