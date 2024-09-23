@@ -27,7 +27,9 @@ body {
 @import 'views/home.css';
 
 /* Component */
-@import 'cmps/post-list.css';
-@import 'cmps/post-preview.css';
-@import 'cmps/post-details.css';
-@import 'cmps/post-edit.css';
+@import 'cmps/post/post-list.css';
+@import 'cmps/post/post-preview.css';
+@import 'cmps/post/post-details.css';
+@import 'cmps/post/post-edit.css';
+
+@import 'cmps/comment/comments-list.css';

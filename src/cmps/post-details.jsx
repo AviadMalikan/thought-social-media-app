@@ -33,7 +33,6 @@ export function PostDetails({ onGoBack, postToShow }) {
         //     ...prevPost, metics: { ...prevPost.metics, comments:[...prevPost.metics.comments,comment] }
         // }))      
         const newPost = { ...post, metics: { ...post.metics, comments: [...post.metics.comments, comment] } }
-
         postService.save(newPost)
             .then(post => {
                 setPost(post)
@@ -41,12 +40,28 @@ export function PostDetails({ onGoBack, postToShow }) {
             })
             .catch(err => { showErrorMsg() })
     }
+    
+    function onRemoveComment(commentId) {
+        const updateComments = post.metics.comments.filter(c => c.id !== commentId)
+        const newPost = { ...post, metics: { ...post.metics, comments: updateComments } }
+        postService.save(newPost)
+            .then(post => {
+                setPost(post)
+                showSuccessMsg('Comment add')
+            })
+            .catch(err => { showErrorMsg() })
+
+    }
+
 
     if (!post) return <h1>Loading...</h1>
     return <div className="post-details">
         <button onClick={onGoBack}>Go BACK</button>
         <button onClick={() => { console.log(post) }}>Log</button>
-        <PostPreview postToShow={postToShow} post={post} isPostDetails={true} />
+        <PostPreview
+            onRemoveComment={onRemoveComment}
+            postToShow={postToShow}
+            post={post} isPostDetails={true} />
         <AddComments onSaveComment={onSaveComment} />
     </div >
 }

@@ -1,10 +1,10 @@
 import { LongTxt } from "./long-txt.jsx";
 import { utilService } from "../services/util.service.js"
 import { Link, useNavigate } from "react-router-dom";
-import { CommentList } from "./comments-list.jsx";
+import { CommentList } from "./comment/comments-list.jsx";
 
 
-export function PostPreview({ post, onRemovePost, isPostDetails }) {
+export function PostPreview({ post, onRemovePost, isPostDetails, }) {
     const navigate = useNavigate()
 
     function onSelectPost(postId) {
