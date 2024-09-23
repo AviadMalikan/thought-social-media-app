@@ -1,7 +1,7 @@
 import { PostPreview } from "./post-preview.jsx"
 
 
-export function PostList({ posts, onRemovePost }) {
+export function PostList({ posts, onRemovePost}) {
 
 
     if (!posts) return <h2>loading...</h2>
