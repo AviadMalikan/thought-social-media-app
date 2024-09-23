@@ -46,7 +46,7 @@ export function PostDetails({ onGoBack, postToShow }) {
     return <div className="post-details">
         <button onClick={onGoBack}>Go BACK</button>
         <button onClick={() => { console.log(post) }}>Log</button>
-        <PostPreview postToShow={postToShow} post={post} />
+        <PostPreview postToShow={postToShow} post={post} isPostDetails={true} />
         <AddComments onSaveComment={onSaveComment} />
 
     </div >

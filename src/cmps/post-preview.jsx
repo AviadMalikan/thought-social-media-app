@@ -3,7 +3,7 @@ import { utilService } from "../services/util.service.js"
 import { Link, useNavigate } from "react-router-dom";
 
 
-export function PostPreview({ post, onRemovePost, postToShow }) {
+export function PostPreview({ post, onRemovePost, isPostDetails }) {
     const navigate = useNavigate()
 
     function onSelectPost(postId) {
@@ -24,10 +24,13 @@ export function PostPreview({ post, onRemovePost, postToShow }) {
                 <span onClick={() => onSelectPost(post.id)}
                     className="post-date pointer">{utilService.showTimeTxt(post.date)}</span>
             </div>
-            <div title="remove" className="post-utils pointer" onClick={() => onRemovePost(post.id)}>•••</div>
-            <Link to={`/posts/edit/${post.id}`}>
-                <div title="edit" className="post-utils pointer" >✏️</div>
-            </Link>
+            {(isPostDetails) &&
+                <div className="post-utils pointer" >
+                    <span onClick={() => onRemovePost(post.id)} className="remove-btn pointer">X</span>
+                    <Link to={`/posts/edit/${post.id}`}>
+                        <span title="edit" className="edit-btn pointer" >✏️</span>
+                    </Link>
+                </div>}
         </section>
 
         <section className="post-content">
@@ -44,7 +47,10 @@ export function PostPreview({ post, onRemovePost, postToShow }) {
                 </div>
             </div>
         </section>
-    </article>
+        {(isPostDetails || post.metics.comments.length) && <section className="post-comments">
+            
+        </section>}
+    </article >
 
 
     return <article className="post-preview">
