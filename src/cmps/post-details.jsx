@@ -48,6 +48,5 @@ export function PostDetails({ onGoBack, postToShow }) {
         <button onClick={() => { console.log(post) }}>Log</button>
         <PostPreview postToShow={postToShow} post={post} isPostDetails={true} />
         <AddComments onSaveComment={onSaveComment} />
-
     </div >
 }

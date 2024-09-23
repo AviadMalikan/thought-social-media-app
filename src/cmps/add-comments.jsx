@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { postService } from "../services/post.service"
+import { utilService } from "../services/util.service"
 
 
 
@@ -10,28 +11,26 @@ export function AddComments({ onSaveComment }) {
         let { value, type, name: field } = target
         value = type === 'number' ? +value : value
         setCommentToPost(prevComment => ({
-            ...prevComment, [field]: value
+            ...prevComment, content: {
+                ...prevComment.content,
+                [field]: value
+            }
         }))
     }
 
     function onSubmitComment(ev) {
         ev.preventDefault()
-        if (!commentToPost.text || !commentToPost.userName) return
+        // if (!commentToPost.text || !commentToPost.userName) return
+        commentToPost.id = utilService.makeId()
+        commentToPost.date = new Date()
         onSaveComment(commentToPost)
-        onRemoveLine('text')
-        onRemoveLine('userName')
     }
 
-    function onRemoveLine(type) {
-        setCommentToPost(prevComment => ({
-            ...prevComment, [type]: ''
-        }))
-    }
 
     return <section className="add-comments">
         <section className="add-comment">
             <form onSubmit={onSubmitComment}>
-                <input
+                {/* <input
                     autoComplete="off"
                     type="text"
                     name="userName"
@@ -40,7 +39,7 @@ export function AddComments({ onSaveComment }) {
                     onChange={handleChange}
                     placeholder="Write your comment as"
                 />
-                <label onClick={() => onRemoveLine('userName')} className="remove-comment-text">X</label>
+                <label onClick={() => onRemoveLine('userName')} className="remove-comment-text">X</label> */}
 
                 <input
                     autoComplete="off"
@@ -51,7 +50,6 @@ export function AddComments({ onSaveComment }) {
                     onChange={handleChange}
                     placeholder="Your comment"
                 />
-                <label onClick={() => onRemoveLine('text')} className="remove-comment-text">X</label>
 
                 <button >Add</button>
             </form>

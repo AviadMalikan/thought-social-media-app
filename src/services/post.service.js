@@ -56,11 +56,11 @@ function getEmptyPost(text = '', likes = 0, byUser = 'guest') {
         id: '',
         author: {
             userName: byUser,
-            profilePic: ''
+            profilePic: '',
         },
         content: {
             text,
-            media: []
+            media: [],
         },
         metics: {
             likes: likes,
@@ -68,15 +68,26 @@ function getEmptyPost(text = '', likes = 0, byUser = 'guest') {
             comments: [],
         },
         isLiked: false,
-        date: new Date(),
+        date: '',
     }
 }
 
-function getEmptyComment() {
+function getEmptyComment(text = '', likes = 0, byUser = 'guest') {
     return {
-        userName: '',
-        text: '',
-        addAt: new Date(),
+        id: '',
+        author: {
+            userName: byUser,
+            profilePic: '',
+        },
+        content: {
+            text,
+            media: [],
+        },
+        metics: {
+            likes: likes,
+        },
+        isLiked: false,
+        date: '' || new Date(),
     }
 }
 

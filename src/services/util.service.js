@@ -43,21 +43,41 @@ function loadFromStorage(key) {
     return (data) ? JSON.parse(data) : undefined
 }
 
-function showTimeTxt(time) {
-    var date = new Date((time || "").replace(/-/g, "/").replace(/[TZ]/g, " ")),
-        diff = (((new Date()).getTime() - date.getTime()) / 1000),
-        day_diff = Math.floor(diff / 86400);
+function showTimeTxt(pastDate) {
+    console.log('pastDate: ', pastDate)
+    // Convert string to Date object if necessary
+    if (typeof pastDate === 'string') {
+        pastDate = new Date(pastDate);
+    }
+    const now = new Date();
+    const diff = now - pastDate; // Time difference in milliseconds
 
-    if (isNaN(day_diff) || day_diff < 0 || day_diff >= 31)
-        return;
+    const minute = 1000 * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+    const week = day * 7;
+    const year = day * 365;
 
-    return day_diff == 0 && (
-        diff < 60 && "just now" ||
-        diff < 120 && "1m" ||
-        diff < 3600 && Math.floor(diff / 60) + "m" ||
-        diff < 7200 && "1h" ||
-        diff < 86400 && Math.floor(diff / 3600) + "h") ||
-        day_diff == 1 && "1d" ||
-        day_diff < 7 && day_diff + "d" ||
-        day_diff < 31 && Math.ceil(day_diff / 7) + "w";
+    // Convert milliseconds difference to positive number
+    const absDiff = Math.abs(diff);
+    if (absDiff < 30 * 1000) { // Less than 30 seconds
+        return 'right now';
+    } else if (absDiff < hour) {
+        const minutes = Math.floor(absDiff / minute);
+        return `${minutes}m`;
+    } else if (absDiff < day) {
+        const hours = Math.floor(absDiff / hour);
+        return `${hours}h`;
+    } else if (absDiff < week) {
+        const days = Math.floor(absDiff / day);
+        return `${days}d`;
+    } else if (absDiff < year) {
+        const weeks = Math.floor(absDiff / week);
+        return `${weeks}w`;
+    } else {
+        const years = Math.floor(absDiff / year);
+        return `${years}y`;
+    }
+
 }
+

@@ -90,6 +90,9 @@
     background-color: red;
 }
 
+.post-comments {
+    grid-column: 2;
+}
 
 @media screen and (max-width: 992px) {
     .post-header img {

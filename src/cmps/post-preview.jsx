@@ -1,6 +1,7 @@
 import { LongTxt } from "./long-txt.jsx";
 import { utilService } from "../services/util.service.js"
 import { Link, useNavigate } from "react-router-dom";
+import { CommentList } from "./comments-list.jsx";
 
 
 export function PostPreview({ post, onRemovePost, isPostDetails }) {
@@ -39,16 +40,17 @@ export function PostPreview({ post, onRemovePost, isPostDetails }) {
                 <div className="post-btn">
                     <span className="like">{post.isLiked ? '♥' : '♡'} {post.metics.likes}</span>
                 </div>
+                {(post.metics.comments) &&
+                    <div className="post-btn">
+                        <span className="commend">🗨️ {post.metics.comments.length}</span>
+                    </div>}
                 <div className="post-btn">
-                    <span className="commend">🗨️ {post.metics.comments.length}</span>
-                </div>
-                <div className="post-btn">
-                    <span className="share">↑ {post.metics.share}</span>
+                    <span className="share">↑ {(post.metics.share) && post.metics.share}</span>
                 </div>
             </div>
         </section>
-        {(isPostDetails || post.metics.comments.length) && <section className="post-comments">
-            
+        {(isPostDetails) && <section className="post-comments">
+            <CommentList comments={post.metics.comments} />
         </section>}
     </article >
 
