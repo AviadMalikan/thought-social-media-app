@@ -18,6 +18,8 @@ export function AddComments({ onSaveComment }) {
         ev.preventDefault()
         if (!commentToPost.text || !commentToPost.userName) return
         onSaveComment(commentToPost)
+        onRemoveLine('text')
+        onRemoveLine('userName')
     }
 
     function onRemoveLine(type) {
@@ -41,6 +43,7 @@ export function AddComments({ onSaveComment }) {
                 <label onClick={() => onRemoveLine('userName')} className="remove-comment-text">X</label>
 
                 <input
+                    autoComplete="off"
                     type="text"
                     name="text"
                     id="text"

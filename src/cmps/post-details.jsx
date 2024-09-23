@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { PostPreview } from "./post-preview.jsx";
 import { postService } from "../services/post.service.js";
 import { AddComments } from "./add-comments.jsx";
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js";
 
 export function PostDetails({ onGoBack, postToShow }) {
     const [post, setPost] = useState(null)
@@ -30,11 +31,15 @@ export function PostDetails({ onGoBack, postToShow }) {
     function onSaveComment(comment) {
         // setPost(prevPost => ({
         //     ...prevPost, metics: { ...prevPost.metics, comments:[...prevPost.metics.comments,comment] }
-        // }))
-        setPost(({ metics, ...prevPost }) =>
-            ({ ...prevPost, metics: { ...metics, comments: [...metics.comments, comment] } })
-        )
+        // }))      
+        const newPost = { ...post, metics: { ...post.metics, comments: [...post.metics.comments, comment] } }
 
+        postService.save(newPost)
+            .then(post => {
+                setPost(post)
+                showSuccessMsg('Comment add')
+            })
+            .catch(err => { showErrorMsg() })
     }
 
     if (!post) return <h1>Loading...</h1>

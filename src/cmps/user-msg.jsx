@@ -20,7 +20,7 @@ export function UserMsg() {
         background: "rgba(247, 238, 211)",
         position: "bottom-end",
         showConfirmButton: false,
-        timer: 1700,
+        timer: 2000,
         width: 'auto',
         timerProgressBar: true,
         didOpen: (toast) => {

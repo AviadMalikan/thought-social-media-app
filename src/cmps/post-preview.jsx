@@ -37,7 +37,7 @@ export function PostPreview({ post, onRemovePost, postToShow }) {
                     <span className="like">{post.isLiked ? '♥' : '♡'} {post.metics.likes}</span>
                 </div>
                 <div className="post-btn">
-                    <span className="commend">🗨️ {post.metics.comments.length - 1}</span>
+                    <span className="commend">🗨️ {post.metics.comments.length}</span>
                 </div>
                 <div className="post-btn">
                     <span className="share">↑ {post.metics.share}</span>
