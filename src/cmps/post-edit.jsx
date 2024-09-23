@@ -35,8 +35,8 @@ export function PostEdit() {
     }
 
     function onSavePost(ev) {
-        const msg = postToEdit.id ? ' Saved' : 'Uploaded'
         ev.preventDefault()
+        const msg = postToEdit.id ? ' Saved' : 'Uploaded'
         postService.save(postToEdit)
             .then(post => {
                 navigate("/posts")

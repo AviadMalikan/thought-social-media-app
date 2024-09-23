@@ -10,6 +10,7 @@ export const postService = {
     remove,
     save,
     getEmptyPost,
+    getEmptyComment,
     getDefaultFilter,
 }
 
@@ -50,7 +51,7 @@ function save(post) {
     }
 }
 
-function getEmptyPost(txt = '', likes = 0, byUser = 'guest') {
+function getEmptyPost(text = '', likes = 0, byUser = 'guest') {
     return {
         id: '',
         author: {
@@ -58,16 +59,24 @@ function getEmptyPost(txt = '', likes = 0, byUser = 'guest') {
             profilePic: ''
         },
         content: {
-            text: txt,
+            text,
             media: []
         },
         metics: {
             likes: likes,
             share: 0,
-            comments: 0,
+            comments: [],
         },
         isLiked: false,
         date: new Date(),
+    }
+}
+
+function getEmptyComment() {
+    return {
+        userName: '',
+        text: '',
+        addAt: new Date(),
     }
 }
 
