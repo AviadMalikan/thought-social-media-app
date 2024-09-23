@@ -25,9 +25,11 @@ export function PostPreview({ post, onRemovePost, isPostDetails }) {
                 <span onClick={() => onSelectPost(post.id)}
                     className="post-date pointer">{utilService.showTimeTxt(post.date)}</span>
             </div>
+            <Link to='/posts'>
+                <span onClick={() => onRemovePost(post.id)} className="remove-btn pointer">X</span>
+            </Link>
             {(isPostDetails) &&
                 <div className="post-utils pointer" >
-                    <span onClick={() => onRemovePost(post.id)} className="remove-btn pointer">X</span>
                     <Link to={`/posts/edit/${post.id}`}>
                         <span title="edit" className="edit-btn pointer" >✏️</span>
                     </Link>

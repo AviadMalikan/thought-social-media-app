@@ -47,7 +47,6 @@ export function PostIndex({ showMsg }) {
             })
     }
 
-
     return <section className="post-index">
         <Link to="/posts/edit">
             <button>Add Post</button>

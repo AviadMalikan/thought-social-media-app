@@ -60,8 +60,8 @@ function showTimeTxt(pastDate) {
 
     // Convert milliseconds difference to positive number
     const absDiff = Math.abs(diff);
-    if (absDiff < 30 * 1000) { // Less than 30 seconds
-        return 'right now';
+    if (absDiff < 59 * 1000) { // Less than 30 seconds
+        return 'now';
     } else if (absDiff < hour) {
         const minutes = Math.floor(absDiff / minute);
         return `${minutes}m`;

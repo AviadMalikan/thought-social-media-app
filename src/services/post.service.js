@@ -51,7 +51,7 @@ function save(post) {
     }
 }
 
-function getEmptyPost(text = '', likes = 0, byUser = 'guest') {
+function getEmptyPost(text = '', likes = 0, byUser = 'guest',date) {
     return {
         id: '',
         author: {
@@ -68,11 +68,11 @@ function getEmptyPost(text = '', likes = 0, byUser = 'guest') {
             comments: [],
         },
         isLiked: false,
-        date: '',
+        date: date || new Date(),
     }
 }
 
-function getEmptyComment(text = '', likes = 0, byUser = 'guest') {
+function getEmptyComment(text = '', likes = 0, byUser = 'guest',date) {
     return {
         id: '',
         author: {
@@ -87,7 +87,7 @@ function getEmptyComment(text = '', likes = 0, byUser = 'guest') {
             likes: likes,
         },
         isLiked: false,
-        date: '' || new Date(),
+        date: date || new Date(),
     }
 }
 
@@ -106,8 +106,8 @@ function _createPosts() {
     let posts = utilService.loadFromStorage(POST_KEY)
     if (!posts || !posts.length) {
         posts = []
-        posts.push(_createPost('hey guys', 50, 'shlomi'))
-        posts.push(_createPost('My tutorial', 7, 'shani'))
+        posts.push(_createPost('hey guys', 50, 'shlomi',(new Date(Date.now() - 2 * 24 * 60 * 60 * 1000))))
+        posts.push(_createPost('My tutorial', 7, 'shani',new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)))
         posts.push(_createPost('welcome to my page', 150, 'aviad'))
         posts.push(_createPost('lorem lipstum of the number six because i think that all i need is live and love but no i dont think so because tha book its pretty but not enough so finally i think yes', 150, 'aviad'))
         utilService.saveToStorage(POST_KEY, posts)
