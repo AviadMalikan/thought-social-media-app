@@ -54,8 +54,8 @@ export function PostDetails({ onGoBack, postToShow }) {
 
     if (!post) return <h1>Loading...</h1>
     return <div className="post-details">
-        <button onClick={onGoBack}>Go BACK</button>
-        <button onClick={() => { console.log(post) }}>Log</button>
+        <button onClick={onGoBack} className="close-btn pointer">{'<'}</button>
+        {/* <div className="post-details-bg"></div> */}
         <PostPreview
             onRemovePost={onRemoveComment}
             postToShow={postToShow}

@@ -1,11 +1,40 @@
-.post-details{
+.post-details {
+    position: relative;
+    padding: 40px 10px;
+}
+
+.post-details-bg {
+    position: absolute;
+    opacity: .1;
+    inset: 0;
+    background-color: white;
+    z-index: -99;
+    border-radius: 8px;
+    display: block;
 }
 
 .post-details>* {
-    margin-inline-end: 6px;
+    /* margin-inline-end: 6px; */
 }
 
 
-.post-details button {
+.post-details .close-btn {
     margin-bottom: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+@media screen and (max-width: 992px) {}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 620px) {
+    .post-details-bg {
+        display: none;
+    }
+
+    .post-details {
+        padding: 0px;
+    }
+
 }
