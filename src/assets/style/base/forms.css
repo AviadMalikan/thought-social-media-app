@@ -31,3 +31,26 @@ input:focus {
     background-color: var(--gray4);
     transition: background-color 1s;
 }
+
+textarea {
+    caret-color: var(--white);
+    color: var(--white);
+    background-color: var(--gray4);
+    transition: background-color 1s;
+    padding: 10px;
+    border: 0;
+    border-radius: 8px;
+    font-family: inherit;
+    /* Use the same font family as input */
+    font-size: inherit;
+    /* Inherit font size */
+    line-height: inherit;
+}
+
+textarea:focus {
+    outline: 0;
+    border: 0;
+    padding: 10px;
+    background-color: var(--gray4);
+    transition: background-color 1s;
+}
