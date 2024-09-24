@@ -43,7 +43,7 @@ export function PostPreview({ post, onRemovePost, isPostDetails, }) {
                     <span className="like">{post.isLiked ? '♥' : '♡'} {post.metics.likes}</span>
                 </div>
                 {(post.metics.comments) &&
-                    <div className="post-btn">
+                    <div className="post-btn" onClick={() => onSelectPost(post.id)}>
                         <span className="commend">🗨️ {post.metics.comments.length}</span>
                     </div>}
                 <div className="post-btn">
