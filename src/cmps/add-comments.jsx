@@ -54,6 +54,5 @@ export function AddComments({ onSaveComment }) {
                 <button >Add</button>
             </form>
         </section>
-        <button onClick={()=>console.log(commentToPost)}>Log</button>
     </section >
 }
