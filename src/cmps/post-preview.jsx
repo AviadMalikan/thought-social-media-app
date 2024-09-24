@@ -20,13 +20,13 @@ export function PostPreview({ post, onRemovePost, isPostDetails, }) {
         </div>
 
         <section className="post-header">
-            <div className="post-details">
+            <div className="post-meta">
                 <span className="by-user">{post.author.userName}</span>
                 <span onClick={() => onSelectPost(post.id)}
                     className="post-date pointer">{utilService.showTimeTxt(post.date)}</span>
             </div>
             <Link to='/posts'>
-                <span onClick={() => onRemovePost(post.id)} className="remove-btn pointer">X</span>
+                <button onClick={() => onRemovePost(post.id)} className="remove-btn pointer">X</button>
             </Link>
             {(isPostDetails) &&
                 <div className="post-utils pointer" >
