@@ -33,3 +33,4 @@ body {
 @import 'cmps/post/post-edit.css';
 
 @import 'cmps/comment/comments-list.css';
+@import 'cmps/comment/add-comments.css';

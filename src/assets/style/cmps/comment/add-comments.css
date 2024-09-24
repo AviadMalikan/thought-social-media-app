@@ -1,0 +1,21 @@
+.comment-form {
+    background-color: var(--gray4);
+    margin: auto;
+    min-height: 70px;
+    width: 420px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.comment-form button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: var(--gray4);
+}
+
+.comment-form textarea {
+    width: 100%;
+    background-color: transparent;
+    margin-bottom: 15px;
+}
