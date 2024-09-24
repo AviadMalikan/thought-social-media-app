@@ -8,8 +8,6 @@ export function LongTxt({ txt, length }) {
     }
 
     function onToggleLongTxt(ev) {
-        console.log(ev);
-        
         ev.stopPropagation()
         setLongTxtShown((prevLongTxtShown) => !prevLongTxtShown)
     }

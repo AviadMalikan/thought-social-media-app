@@ -26,8 +26,6 @@ export function PostDetails({ onGoBack, postToShow }) {
         navigate('/posts')
     }
 
-    console.log(post)
-
     function onSaveComment(comment) {
         // setPost(prevPost => ({
         //     ...prevPost, metics: { ...prevPost.metics, comments:[...prevPost.metics.comments,comment] }

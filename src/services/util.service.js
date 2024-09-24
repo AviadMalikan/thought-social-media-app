@@ -44,7 +44,6 @@ function loadFromStorage(key) {
 }
 
 function showTimeTxt(pastDate) {
-    console.log('pastDate: ', pastDate)
     // Convert string to Date object if necessary
     if (typeof pastDate === 'string') {
         pastDate = new Date(pastDate);
