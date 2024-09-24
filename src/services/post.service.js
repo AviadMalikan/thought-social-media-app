@@ -42,7 +42,6 @@ function remove(postId) {
 }
 
 function save(post) {
-    console.log('post: ', post)
     if (post.id) {
         return storageService.put(POST_KEY, post)
 

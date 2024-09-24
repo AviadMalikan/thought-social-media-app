@@ -38,17 +38,17 @@ export function PostDetails({ onGoBack, postToShow }) {
             })
             .catch(err => { showErrorMsg() })
     }
-    
+
     function onRemoveComment(commentId) {
         const updateComments = post.metics.comments.filter(c => c.id !== commentId)
         const newPost = { ...post, metics: { ...post.metics, comments: updateComments } }
+
         postService.save(newPost)
             .then(post => {
                 setPost(post)
-                showSuccessMsg('Comment add')
+                showSuccessMsg('Comment Removed')
             })
             .catch(err => { showErrorMsg() })
-
     }
 
 
@@ -57,7 +57,7 @@ export function PostDetails({ onGoBack, postToShow }) {
         <button onClick={onGoBack}>Go BACK</button>
         <button onClick={() => { console.log(post) }}>Log</button>
         <PostPreview
-            onRemoveComment={onRemoveComment}
+            onRemovePost={onRemoveComment}
             postToShow={postToShow}
             post={post} isPostDetails={true} />
         <AddComments onSaveComment={onSaveComment} />

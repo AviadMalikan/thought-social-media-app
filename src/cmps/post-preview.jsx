@@ -52,7 +52,7 @@ export function PostPreview({ post, onRemovePost, isPostDetails, }) {
             </div>
         </section>
         {(isPostDetails) && <section className="post-comments">
-            <CommentList comments={post.metics.comments} />
+            <CommentList comments={post.metics.comments} onRemoveComment={onRemovePost}/>
         </section>}
     </article >
 

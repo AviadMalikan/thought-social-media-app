@@ -3,7 +3,6 @@ import { postService } from "../services/post.service"
 import { utilService } from "../services/util.service"
 
 
-
 export function AddComments({ onSaveComment }) {
     const [commentToPost, setCommentToPost] = useState(postService.getEmptyComment())
 
@@ -24,6 +23,7 @@ export function AddComments({ onSaveComment }) {
         commentToPost.id = utilService.makeId()
         commentToPost.date = new Date()
         onSaveComment(commentToPost)
+        setCommentToPost(prevPost => postService.getEmptyComment())
     }
 
 
@@ -46,7 +46,7 @@ export function AddComments({ onSaveComment }) {
                     type="text"
                     name="text"
                     id="text"
-                    value={commentToPost.text}
+                    value={commentToPost.content.text}
                     onChange={handleChange}
                     placeholder="Your comment"
                 />
@@ -54,5 +54,6 @@ export function AddComments({ onSaveComment }) {
                 <button >Add</button>
             </form>
         </section>
+        <button onClick={()=>console.log(commentToPost)}>Log</button>
     </section >
 }
