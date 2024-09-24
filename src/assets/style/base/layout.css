@@ -28,6 +28,6 @@
 /* On screens that are 600px or less, set the background color to olive */
 @media screen and (max-width: 620px) {
     .main-layout {
-        grid-template-columns: 1.6rem 1fr 1.6rem;
+        grid-template-columns: 1rem 1fr 1rem;
     }
 }
