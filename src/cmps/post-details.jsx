@@ -39,8 +39,6 @@ export function PostDetails({ onGoBack, postToShow }) {
     function onRemoveComment(commentId) {
         postService.removeComment(post.id, commentId)
             .then(post => {
-                console.log('post: ', post)
-
                 setPost(post)
                 showSuccessMsg('Comment Removed')
             })

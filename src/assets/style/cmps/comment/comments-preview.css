@@ -63,8 +63,8 @@
 
 .comment-btn {
     cursor: pointer;
-    padding: 5px 10px;
-    height: 36px;
+    padding: 0px 10px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
