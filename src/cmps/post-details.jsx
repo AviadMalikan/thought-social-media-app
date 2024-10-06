@@ -27,16 +27,22 @@ export function PostDetails({ onGoBack, postToShow }) {
     }
 
     function onSaveComment(comment) {
+        postService.saveReview(post.id, comment)
+            .then(p => {
+                setPost(p)
+                showSuccessMsg('Comment add')
+            })
+
         // setPost(prevPost => ({
         //     ...prevPost, metics: { ...prevPost.metics, comments:[...prevPost.metics.comments,comment] }
         // }))      
-        const newPost = { ...post, metics: { ...post.metics, comments: [...post.metics.comments, comment] } }
-        postService.save(newPost)
-            .then(post => {
-                setPost(post)
-                showSuccessMsg('Comment add')
-            })
-            .catch(err => { showErrorMsg() })
+        // const newPost = { ...post, metics: { ...post.metics, comments: [...post.metics.comments, comment] } }
+        // postService.save(newPost)
+        //     .then(post => {
+        //         setPost(post)
+        //         showSuccessMsg('Comment add')
+        //     })
+        //     .catch(err => { showErrorMsg() })
     }
 
     function onRemoveComment(commentId) {

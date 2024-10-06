@@ -26,8 +26,8 @@ export function AddComments({ onSaveComment }) {
     function onSubmitComment(ev) {
         ev.preventDefault()
         // if (!commentToPost.text || !commentToPost.userName) return
-        commentToPost.id = utilService.makeId()
-        commentToPost.date = new Date()
+        // commentToPost.id = utilService.makeId()
+        // commentToPost.date = new Date()
         onSaveComment(commentToPost)
         setCommentToPost(prevPost => postService.getEmptyComment())
     }

@@ -9,11 +9,8 @@ export function PostPreview({ post, onRemovePost, isPostDetails, }) {
     const navigate = useNavigate()
 
     function onToggleLike() {
-    //     const newPost = { ...post, isLiked: !post.isLiked }
-    //     console.log('post: ', post)
-    //     console.log('newPost`: ', newPost)
-        
-    //     postService.save(newPost)
+        const newPost = { ...post, isLiked: !post.isLiked }
+        postService.save(newPost)
     }
 
     function onSelectPost(postId) {

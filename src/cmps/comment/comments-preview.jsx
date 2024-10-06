@@ -12,36 +12,31 @@ export function CommentPreview({ comment }) {
         return
     }
 
-    function onSelectComment() {
-    }
+
 
     function onRemoveComment() {
 
     }
 
+
     return <article className="comment-preview">
         <div className="userImg">
-            {/* <img
-                // src={imgUser}
-                alt={`${comment.author.userName} img`} /> */}
+            <img
+                src={comment.author.img ? comment.author.img : `https://robohash.org/${comment.author.userName}`}
+                alt={`${comment.author.userName} img`} />
         </div>
 
         <section className="comment-header">
             <div className="comment-meta">
-                {/* <span className="by-user">{comment.author.userName} </span> */}
-                <span onClick={() => onSelectComment(comment.id)}
+                <span className="by-user">{comment.author.userName} </span>
+                <span
                     className="comment-date pointer">{utilService.showTimeTxt(comment.date)}</span>
             </div>
             <span onClick={() => onRemoveComment(comment.id)} className="remove-btn pointer">X</span>
-            {<div className="comment-utils pointer" >
-                <Link to={`/comments/edit/${comment.id}`}>
-                    <span title="edit" className="edit-btn pointer" >✏️</span>
-                </Link>
-            </div>}
         </section>
 
         <section className="comment-content">
-            <p className="comment-text" onClick={() => onSelectComment(comment.id)}>{<LongTxt txt={comment.content.text} length={50} />}</p>
+            <p className="comment-text" >{<LongTxt txt={comment.content.text} length={50} />}</p>
             <div className="comment-data">
                 <div className="comment-btn">
                     <span className="like"
@@ -49,7 +44,7 @@ export function CommentPreview({ comment }) {
                     >{comment.isLiked ? '♥' : '♡'} {comment.metics.likes}</span>
                 </div>
                 {(comment.metics.comments) &&
-                    <div className="comment-btn" onClick={() => onSelectComment(comment.id)}>
+                    <div className="comment-btn" >
                         <span className="commend">🗨️ {comment.metics.comments.length}</span>
                     </div>}
                 <div className="comment-btn">

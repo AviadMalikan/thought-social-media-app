@@ -9,6 +9,7 @@ export const postService = {
     get,
     remove,
     save,
+    saveReview,
     getEmptyPost,
     getEmptyComment,
     getDefaultFilter,
@@ -50,7 +51,19 @@ function save(post) {
     }
 }
 
-function getEmptyPost(text = '', likes = 0, byUser = 'guest',date) {
+function saveReview(postId, comment) {
+    return get(postId).then(p => {
+        if (comment.id) {
+        } else {
+            comment.id = utilService.makeId()
+            comment.date = new Date()
+            p.metics.comments.push(comment)
+            return save(p)
+        }
+    })
+}
+
+function getEmptyPost(text = '', likes = 0, byUser = 'guest', date) {
     return {
         id: '',
         author: {
@@ -71,12 +84,12 @@ function getEmptyPost(text = '', likes = 0, byUser = 'guest',date) {
     }
 }
 
-function getEmptyComment(text = '', likes = 0, byUser = 'guest',date) {
+function getEmptyComment(text = '', likes = 0, byUser = 'guest', date) {
     return {
         id: '',
         author: {
             userName: byUser,
-            profilePic: '',
+            imgUser: '',
         },
         content: {
             text,
@@ -105,8 +118,8 @@ function _createPosts() {
     let posts = utilService.loadFromStorage(POST_KEY)
     if (!posts || !posts.length) {
         posts = []
-        posts.push(_createPost('hey guys', 50, 'shlomi',(new Date(Date.now() - 2 * 24 * 60 * 60 * 1000))))
-        posts.push(_createPost('My tutorial', 7, 'shani',new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)))
+        posts.push(_createPost('hey guys', 50, 'shlomi', (new Date(Date.now() - 2 * 24 * 60 * 60 * 1000))))
+        posts.push(_createPost('My tutorial', 7, 'shani', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)))
         posts.push(_createPost('welcome to my page', 150, 'aviad'))
         posts.push(_createPost('lorem lipstum of the number six because i think that all i need is live and love but no i dont think so because tha book its pretty but not enough so finally i think yes', 150, 'aviad'))
         utilService.saveToStorage(POST_KEY, posts)
