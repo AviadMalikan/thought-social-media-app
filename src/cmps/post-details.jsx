@@ -5,6 +5,7 @@ import { PostPreview } from "./post-preview.jsx";
 import { postService } from "../services/post.service.js";
 import { AddComments } from "./add-comments.jsx";
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js";
+import { CommentList } from "./comment/comments-list.jsx";
 
 export function PostDetails({ onGoBack, postToShow }) {
     const [post, setPost] = useState(null)
@@ -32,27 +33,15 @@ export function PostDetails({ onGoBack, postToShow }) {
                 setPost(p)
                 showSuccessMsg('Comment add')
             })
-
-        // setPost(prevPost => ({
-        //     ...prevPost, metics: { ...prevPost.metics, comments:[...prevPost.metics.comments,comment] }
-        // }))      
-        // const newPost = { ...post, metics: { ...post.metics, comments: [...post.metics.comments, comment] } }
-        // postService.save(newPost)
-        //     .then(post => {
-        //         setPost(post)
-        //         showSuccessMsg('Comment add')
-        //     })
-        //     .catch(err => { showErrorMsg() })
+            .catch(err => { showErrorMsg() })
     }
 
     function onRemoveComment(commentId) {
-        const updateComments = post.metics.comments.filter(c => c.id !== commentId)
-        const newPost = { ...post, metics: { ...post.metics, comments: updateComments } }
-
-        postService.save(newPost)
+        postService.removeComment(post.id, commentId)
             .then(post => {
+                console.log('post: ', post)
+
                 setPost(post)
-                console.log('NAV')
                 showSuccessMsg('Comment Removed')
             })
             .catch(err => { showErrorMsg() })
@@ -64,9 +53,12 @@ export function PostDetails({ onGoBack, postToShow }) {
         <button onClick={onGoBack} className="close-btn pointer">{'<'}</button>
         {/* <div className="post-details-bg"></div> */}
         <PostPreview
-            onRemovePost={onRemoveComment}
+            onRemoveComment={onRemoveComment}
             postToShow={postToShow}
             post={post} isPostDetails={true} />
+        <section className="post-comments">
+            <CommentList comments={post.metics.comments} onRemoveComment={onRemoveComment} />
+        </section>
         <AddComments onSaveComment={onSaveComment} />
     </div >
 }

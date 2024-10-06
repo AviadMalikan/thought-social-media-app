@@ -3,6 +3,8 @@
     text-align: start;
     display: grid;
     grid-template-columns: 48px minmax(0px, 1fr);
+    position: relative;
+    left: -18px;
 }
 
 .comment-content {
@@ -25,17 +27,10 @@
     outline: .5px solid var(--gray1);
     border-radius: 50%;
     margin-inline-end: 10px;
-    grid-row-end: span 2
+    grid-row-end: span 2;
+    background: var(--gray3);
 }
 
-.userImg img {
-    object-fit: cover;
-    height: 36px;
-    width: 36px;
-    aspect-ratio: auto 36 / 36;
-    border-radius: 50%;
-    /* background-color: var(--gray1); */
-}
 
 .by-user {
     font-size: 0.938rem;

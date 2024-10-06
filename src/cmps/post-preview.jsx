@@ -31,15 +31,15 @@ export function PostPreview({ post, onRemovePost, isPostDetails, }) {
                 <span onClick={() => onSelectPost(post.id)}
                     className="post-date pointer">{utilService.showTimeTxt(post.date)}</span>
             </div>
-            <Link to='/posts'>
-                <span onClick={() => onRemovePost(post.id)} className="remove-btn pointer">X</span>
-            </Link>
-            {(isPostDetails) &&
-                <div className="post-utils pointer" >
-                    <Link to={`/posts/edit/${post.id}`}>
-                        <span title="edit" className="edit-btn pointer" >✏️</span>
-                    </Link>
-                </div>}
+
+            <div className="post-utils pointer" >
+                <Link to='/posts'>
+                    <span onClick={() => onRemovePost(post.id)} className="remove-btn pointer">X</span>
+                </Link>
+                {(isPostDetails) && <Link to={`/posts/edit/${post.id}`}>
+                    <span title="edit" className="edit-btn pointer" >✏️</span>
+                </Link>}
+            </div>
         </section>
 
         <section className="post-content">
@@ -59,7 +59,7 @@ export function PostPreview({ post, onRemovePost, isPostDetails, }) {
             </div>
         </section>
         {(isPostDetails) && <section className="post-comments">
-            <CommentList comments={post.metics.comments} onRemoveComment={onRemovePost} />
+            {/* <CommentList comments={post.metics.comments} onRemoveComment={onRemoveComment} /> */}
         </section>}
     </article >
 
