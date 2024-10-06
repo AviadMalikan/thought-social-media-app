@@ -6,7 +6,7 @@ export function CommentList({ comments, onRemoveComment }) {
     // if (!comments.length) return <h6>No comments yet. be the first one!</h6>
     return <ul className="comments-list">
         {comments.map(c => <li key={c.id}>
-            <PostPreview post={c} onRemovePost={onRemoveComment}/>
+            <CommentPreview comment={c} onRemovePost={onRemoveComment}/>
         </li>)}
     </ul>
 }

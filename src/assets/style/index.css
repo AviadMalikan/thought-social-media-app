@@ -34,3 +34,4 @@ body {
 
 @import 'cmps/comment/comments-list.css';
 @import 'cmps/comment/add-comments.css';
+@import 'cmps/comment/comments-preview.css';

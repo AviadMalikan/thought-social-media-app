@@ -46,6 +46,7 @@ export function PostDetails({ onGoBack, postToShow }) {
         postService.save(newPost)
             .then(post => {
                 setPost(post)
+                console.log('NAV')
                 showSuccessMsg('Comment Removed')
             })
             .catch(err => { showErrorMsg() })
