@@ -5,19 +5,13 @@ import { utilService } from "../../services/util.service"
 import { CommentList } from "./comments-list"
 import { LongTxt } from "../long-txt"
 
-export function CommentPreview({ comment }) {
-    console.log('comment: ', comment)
+export function CommentPreview({ comment, onRemoveComment }) {
 
     function onToggleLike() {
         return
     }
 
-
-
-    function onRemoveComment() {
-
-    }
-
+    function onSelectComment() { }
 
     return <article className="comment-preview">
         <div className="userImg">
@@ -29,14 +23,14 @@ export function CommentPreview({ comment }) {
         <section className="comment-header">
             <div className="comment-meta">
                 <span className="by-user">{comment.author.userName} </span>
-                <span
+                <span onClick={() => onSelectComment(comment.id)}
                     className="comment-date pointer">{utilService.showTimeTxt(comment.date)}</span>
             </div>
             <span onClick={() => onRemoveComment(comment.id)} className="remove-btn pointer">X</span>
         </section>
 
         <section className="comment-content">
-            <p className="comment-text" >{<LongTxt txt={comment.content.text} length={50} />}</p>
+            <p className="comment-text" onClick={() => onSelectComment(comment.id)}>{<LongTxt txt={comment.content.text} length={50} />}</p>
             <div className="comment-data">
                 <div className="comment-btn">
                     <span className="like"
@@ -44,7 +38,7 @@ export function CommentPreview({ comment }) {
                     >{comment.isLiked ? '♥' : '♡'} {comment.metics.likes}</span>
                 </div>
                 {(comment.metics.comments) &&
-                    <div className="comment-btn" >
+                    <div className="comment-btn" onClick={() => onSelectComment(comment.id)}>
                         <span className="commend">🗨️ {comment.metics.comments.length}</span>
                     </div>}
                 <div className="comment-btn">
