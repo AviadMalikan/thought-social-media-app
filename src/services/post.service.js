@@ -8,8 +8,9 @@ export const postService = {
     query,
     get,
     remove,
+    removeComment,
     save,
-    saveReview,
+    saveComment,
     getEmptyPost,
     getEmptyComment,
     getDefaultFilter,
@@ -51,7 +52,7 @@ function save(post) {
     }
 }
 
-function saveReview(postId, comment) {
+function saveComment(postId, comment) {
     return get(postId).then(p => {
         if (comment.id) {
         } else {
@@ -60,6 +61,14 @@ function saveReview(postId, comment) {
             p.metics.comments.push(comment)
             return save(p)
         }
+    })
+}
+
+function removeComment(postId, commentId) {
+    return get(postId).then(p => {
+        const updateComments = p.metics.comments.filter(c => c.id !== commentId)
+        const newPost = { ...p, metics: { ...p.metics, comments: updateComments } }
+        return save(newPost)
     })
 }
 
