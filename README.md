@@ -1,4 +1,4 @@
-
+"
 # Thought
 
 Thought is a real-time social platform inspired by META's "Threads" application, where users can share fleeting thoughts from strangers around the world. It allows you to engage by liking posts and responding instantly, fostering spontaneous interactions.
@@ -15,3 +15,4 @@ Responsive UI: A fully responsive interface, providing a smooth user experience 
 Getting Started
 
 
+"
