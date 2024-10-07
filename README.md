@@ -13,23 +13,5 @@ React: Built entirely with React, utilizing powerful hooks like useState, useEff
 Real-Time Features: Real-time updates that keep conversations and interactions dynamic.
 Responsive UI: A fully responsive interface, providing a smooth user experience whether you're on a desktop or mobile device.
 Getting Started
-To run Thought locally, follow these steps:
-
-Clone the repository:
-
-bash
-Copy code
-git clone https://github.com/yourusername/thought.git
-Install dependencies:
-
-bash
-Copy code
-npm install
-Start the development server:
-
-bash
-Copy code
-npm start
-The app should now be running at http://localhost:3000!
 
 
