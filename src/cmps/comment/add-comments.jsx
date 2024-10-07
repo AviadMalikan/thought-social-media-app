@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
-import { postService } from "../services/post.service"
-import { utilService } from "../services/util.service"
+import { postService } from "../../services/post.service"
+import { utilService } from "../../services/util.service"
 
 
 export function AddComments({ onSaveComment }) {

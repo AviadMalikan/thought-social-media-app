@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { PostPreview } from "./post-preview.jsx";
 import { postService } from "../services/post.service.js";
-import { AddComments } from "./add-comments.jsx";
+import { AddComments } from "./comment/add-comments.jsx";
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js";
 import { CommentList } from "./comment/comments-list.jsx";
 
@@ -46,11 +46,13 @@ export function PostDetails({ onGoBack, postToShow }) {
     }
 
 
+
     if (!post) return <h1>Loading...</h1>
     return <div className="post-details">
-        <button onClick={onGoBack} className="close-btn pointer">{'<'}</button>
+        <button onClick={onGoBack} className="close-btn pointer">{'Home'}</button>
         {/* <div className="post-details-bg"></div> */}
         <PostPreview
+            // onToggleLike={onToggleLike}
             onRemoveComment={onRemoveComment}
             postToShow={postToShow}
             post={post} isPostDetails={true} />
