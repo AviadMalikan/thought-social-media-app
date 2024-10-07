@@ -5,13 +5,9 @@ import { CommentList } from "./comment/comments-list.jsx";
 import { postService } from "../services/post.service.js";
 
 
-export function PostPreview({ post, onRemovePost, isPostDetails, }) {
+export function PostPreview({ post, onRemovePost, isPostDetails, onToggleLike }) {
     const navigate = useNavigate()
 
-    function onToggleLike() {
-        const newPost = { ...post, isLiked: !post.isLiked }
-        postService.save(newPost)
-    }
 
     function onSelectPost(postId) {
         navigate(`/posts/${postId}`)
@@ -24,7 +20,6 @@ export function PostPreview({ post, onRemovePost, isPostDetails, }) {
                 src={imgUser}
                 alt={`${post.author.userName} img`} />
         </div>
-
         <section className="post-header">
             <div className="post-meta">
                 <span className="by-user">{post.author.userName} </span>
@@ -46,8 +41,7 @@ export function PostPreview({ post, onRemovePost, isPostDetails, }) {
             <p className="post-text" onClick={() => onSelectPost(post.id)}>{<LongTxt txt={post.content.text} length={50} />}</p>
             <div className="post-data">
                 <div className="post-btn">
-                    <span className="like" onClick={() => onToggleLike()}
-                    >{post.isLiked ? '♥' : '♡'} {post.metics.likes}</span>
+                    <span className="like" onClick={() => onToggleLike(post.id)}>{post.isLiked ? '♥' : '♡'} {post.metics.likes}</span>
                 </div>
                 {(post.metics.comments) &&
                     <div className="post-btn" onClick={() => onSelectPost(post.id)}>

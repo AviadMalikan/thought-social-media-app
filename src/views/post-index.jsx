@@ -47,6 +47,12 @@ export function PostIndex({ showMsg }) {
             })
     }
 
+    function onToggleLike(postId) {
+        // const newPost = { ...post, isLiked: !post.isLiked }
+        // postService.save(newPost).then(setPost)
+    }
+
+
     return <section className="post-index">
         <Link to="/posts/edit">
             <button>Add Post</button>
@@ -55,7 +61,7 @@ export function PostIndex({ showMsg }) {
         {/* <PostFilter onSetFilter={onSetFilter} /> */}
         {
             (!isLoading) && <PostList posts={posts}
-                onSelectPost={onSelectPost}
+                onToggleLike={onToggleLike}
                 onRemovePost={onRemovePost} />
         }
         {isLoading && <h3>LOADING...</h3>}

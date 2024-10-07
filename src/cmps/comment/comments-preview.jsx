@@ -5,7 +5,7 @@ import { utilService } from "../../services/util.service"
 import { CommentList } from "./comments-list"
 import { LongTxt } from "../long-txt"
 
-export function CommentPreview({ comment, onRemoveComment }) {
+export function CommentPreview({ comment, onRemoveComment, }) {
 
     function onToggleLike() {
         return
