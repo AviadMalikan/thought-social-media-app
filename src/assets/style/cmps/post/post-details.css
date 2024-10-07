@@ -3,7 +3,7 @@
     padding: 40px 10px;
 }
 
-.post-details-bg {
+/* .post-details-bg {
     position: absolute;
     opacity: .1;
     inset: 0;
@@ -11,7 +11,7 @@
     z-index: -99;
     border-radius: 8px;
     display: block;
-}
+} */
 
 .post-details>* {
     /* margin-inline-end: 6px; */
@@ -31,6 +31,10 @@
 @media screen and (max-width: 620px) {
     .post-details-bg {
         display: none;
+    }
+
+    .post-details .close-btn {
+        position: relative;
     }
 
     .post-details {

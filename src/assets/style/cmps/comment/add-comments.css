@@ -2,7 +2,8 @@
     background-color: var(--gray4);
     margin: auto;
     min-height: 70px;
-    width: 420px;
+    width: 80%;
+    max-width: 420px;
     border-radius: 8px;
     position: relative;
 }
