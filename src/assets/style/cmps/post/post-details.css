@@ -13,10 +13,6 @@
     display: block;
 } */
 
-.post-details>* {
-    /* margin-inline-end: 6px; */
-}
-
 
 .post-details .close-btn {
     margin-bottom: 20px;
